@@ -29,7 +29,7 @@ $view->incs('header');
                 <p class="card-text">Роль: <?= $user->roleName ?></p> <!-- Вывод названия роли -->
                 <p class="card-text"><?= $user->email() ?></p>
                 <div class="d-grid gap-2 d-sm-flex">
-                    <?php if($auth->isAdmin() || (($_SESSION['user_id']) && $_SESSION['user_id'] == $user->id()) ){ ?>
+                    <?php if($auth->isAdmin() || ((array_key_exists('user_id', $_SESSION)) && $_SESSION['user_id'] == $user->id()) ){ ?>
                         <a href="/user/edit?id=<?= $user->id() ?>" class="btn btn-primary">Редактировать</a>
                     <?php }
                     if($auth->isAdmin()){
