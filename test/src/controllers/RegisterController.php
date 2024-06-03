@@ -8,6 +8,9 @@ class RegisterController extends \App\Kernel\Controller\Controller
     }
     public function registration(){
 
+        $file = $this->request()->file('image');
+        //id пользователя в названии это временное решение, чтобы не случилось загрузки файлов с одинаковыми названиями двумя разными пользователями
+        $filepath = $file->move('images/avatars', "{$this->request()->input('id')}{$this->request()->file('image')->name}");
         $validation = $this->request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'email' => ['required', 'email'],
@@ -25,7 +28,7 @@ class RegisterController extends \App\Kernel\Controller\Controller
                 'name' => $this->request()->input('name'),
                 'email' => $this->request()->input('email'),
                 'password' => password_hash($this->request()->input('password'), PASSWORD_DEFAULT),
-
+                'avatar' => $this->request()->file('image')->name
             ]);
             $this->db()->insert('user_roles', [
                 'role_id' => 29,

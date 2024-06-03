@@ -9,7 +9,7 @@ $view->incs('header');
     <div class="container">
         <h1>Регистрация</h1>
 
-        <form action="/register" method="post">
+        <form action="/register" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" class="form-control" id="email" name="email">

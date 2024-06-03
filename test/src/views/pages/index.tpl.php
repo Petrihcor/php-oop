@@ -4,9 +4,10 @@
  * @var array<\App\Models\User> $users
  * @var array<\App\Models\User> $roles
  * @var \App\Kernel\Auth\Auth $auth
+ * @var \App\Kernel\Session\Session $session
  */
 
-//dd($users);
+
 
 $view->incs('header');
 //session_destroy();
@@ -28,7 +29,7 @@ $view->incs('header');
                 <p class="card-text">Роль: <?= $user->roleName ?></p> <!-- Вывод названия роли -->
                 <p class="card-text"><?= $user->email() ?></p>
                 <div class="d-grid gap-2 d-sm-flex">
-                    <?php if($auth->isAdmin() || $_SESSION["user_id"] == $user->id()){ ?>
+                    <?php if($auth->isAdmin() || (($_SESSION['user_id']) && $_SESSION['user_id'] == $user->id()) ){ ?>
                         <a href="/user/edit?id=<?= $user->id() ?>" class="btn btn-primary">Редактировать</a>
                     <?php }
                     if($auth->isAdmin()){

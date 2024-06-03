@@ -21,6 +21,7 @@ class UploadedFile
             mkdir($storagePath, 0777, true);
         }
         $filename = $filename ?? $this->randomFileName();
+
         $imageInfo = getimagesize($this->tmp_name);
 
         if ($imageInfo !== false) {
