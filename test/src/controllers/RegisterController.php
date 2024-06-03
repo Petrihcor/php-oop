@@ -9,8 +9,9 @@ class RegisterController extends \App\Kernel\Controller\Controller
     public function registration(){
 
         $file = $this->request()->file('image');
-        //id пользователя в названии это временное решение, чтобы не случилось загрузки файлов с одинаковыми названиями двумя разными пользователями
-        $filepath = $file->move('images/avatars', "{$this->request()->input('id')}{$this->request()->file('image')->name}");
+        if ($file->tmp_name) {
+            $filepath = $file->move('images/avatars', "{$this->request()->input('id')}{$this->request()->file('image')->name}");
+        }
         $validation = $this->request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'email' => ['required', 'email'],

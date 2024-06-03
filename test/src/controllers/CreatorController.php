@@ -120,7 +120,7 @@ class CreatorController extends Controller
             $filepath = $file->move('images/avatars', "{$this->request()->input('id')}{$this->request()->file('image')->name}");
         }
         //id пользователя в названии это временное решение, чтобы не случилось загрузки файлов с одинаковыми названиями двумя разными пользователями
-        
+
         $validation = $this->request()->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'email' => ['required', 'email'],
