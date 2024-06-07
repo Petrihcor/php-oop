@@ -1,0 +1,21 @@
+{
+  "name": "vendor_name/test",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Denis",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "App\\Kernel\\": "Kernel/"
+    }
+  }
+}
